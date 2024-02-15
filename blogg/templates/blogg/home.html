@@ -1,14 +1,22 @@
-{% extends 'blogApp/base.html' %}
-{% load static %}
-{% block content %}
-{% for post in posts %}
+{% extends 'blogApp/base.html' %} 
+{% load static %} 
+{% block content %} 
+  {% for post in posts %}
 <section class="page-section clearfix">
   <div class="container">
-    <div class="intro mb-4 text-center bg-faded p-5 rounded" style="display: flex; align-items: center">
+    <div
+      class="intro mb-4 text-center bg-faded p-5 rounded"
+      style="display: flex; align-items: center"
+    >
       <div style="flex: 1; margin-right: 20px">
-        {% if post.imagen %}
-          <img src="{{ post.imagen.url }}" class="intro-img img-fluid rounded" alt="" style="width: 100%; max-width: 300px">
-        {% endif %}
+        
+        <img
+          src="{{ post.imagen.url }}"
+          class="intro-img img-fluid rounded"
+          alt=""
+          style="width: 100%; max-width: 300px"
+        />
+      
       </div>
       <div>
         <h2 class="section-heading mb-4">
@@ -19,5 +27,4 @@
     </div>
   </div>
 </section>
-{% endfor %}
-{% endblock %}
+{% endfor %} {% endblock %}
