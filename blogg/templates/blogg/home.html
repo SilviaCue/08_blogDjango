@@ -1,26 +1,30 @@
-{% extends 'blogApp/base.html' %}  
+{% extends 'blogApp/base.html' %}
 {% load static %}
 {% block content %}
+
+<section>
+  <div style="width: 75%; margin: auto; text-align: center; color: white;">
+    Categorias:
+    {% for post in posts %}
+    {% for categoria in post.categorias.all %} 
+    <a href="{% url 'categoria' categoria.id %}" class="linksCategorias">{{ categoria.nombre }}</a>
+    &nbsp;&nbsp;&nbsp;
+    {% endfor %}
+    {% endfor %}
+  </div>
+</section>
 
 {% for post in posts %}
 <section class="page-section clearfix">
   <div class="container">
-    <div
-      class="intro mb-4 text-center bg-faded p-5 rounded"
-      style="display: flex; align-items: center"
-    >
+    <div class="intro mb-4 text-center bg-faded p-5 rounded" style="display: flex; align-items: center">
       <!-- Div para la imagen -->
       <div style="margin-right: 20px;">
         {% if post.imagen %}
-          <img
-            src="{{post.imagen.url }}"
-            class="intro-img img-fluid rounded"
-            alt=""
-            style="max-width: 600px;"
-          />
+        <img src="{{ post.imagen.url }}" class="intro-img img-fluid rounded" alt="" style="max-width: 600px;" />
         {% else %}
-          <!-- Si no hay imagen, muestra un marcador de posición o un mensaje -->
-          <p>No hay imagen disponible</p>
+        <!-- Si no hay imagen, muestra un marcador de posición o un mensaje -->
+        <p>No hay imagen disponible</p>
         {% endif %}
       </div>
       
@@ -33,27 +37,12 @@
 
         <!-- Div para el autor -->
         <div style="text-align: right; font-size: 0.8em">
-          Autor: {{post.autor}}
+          Autor: {{ post.autor }}
         </div>
       </div>
     </div>
   </div>
 </section>
 {% endfor %}
-<section>
-  <div style="width: 75%; margin: auto; text-align: center; color: white;">
-    Categorias:
-    {% for post in posts %}
-    
-    {% for categoria in post.categorias.all %} 
-    <a href=" {% url 'categoria' categoria.id%}" class="linksCategorias">{{categoria.nombre}}</a>
-      &nbsp;&nbsp;&nbsp;
-      {% endfor %}
-    {% endfor %}
-
-  </div>
-</section>
 
 {% endblock %}
-
-

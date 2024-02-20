@@ -1,8 +1,5 @@
-{% extends 'blogApp/base.html' %}  
-{% load static %}
-{% block content %}
-
-{% for post in posts %}
+{% extends 'blogApp/base.html' %} {% load static %} {% block content %} {% for
+post in posts %}
 <section class="page-section clearfix">
   <div class="container">
     <div
@@ -10,22 +7,22 @@
       style="display: flex; align-items: center"
     >
       <!-- Div para la imagen -->
-      <div style="margin-right: 20px;">
+      <div style="margin-right: 20px">
         {% if post.imagen %}
-          <img
-            src="{{post.imagen.url }}"
-            class="intro-img img-fluid rounded"
-            alt=""
-            style="max-width: 600px;"
-          />
+        <img
+          src="{{post.imagen.url }}"
+          class="intro-img img-fluid rounded"
+          alt=""
+          style="max-width: 600px"
+        />
         {% else %}
-          <!-- Si no hay imagen, muestra un marcador de posición o un mensaje -->
-          <p>No hay imagen disponible</p>
+        <!-- Si no hay imagen, muestra un marcador de posición o un mensaje -->
+        <p>No hay imagen disponible</p>
         {% endif %}
       </div>
-      
+
       <!-- Div para el título y el contenido -->
-      <div style="flex: 1;">
+      <div style="flex: 1">
         <h2 class="section-heading mb-4">
           <span class="section-heading-lower">{{ post.titulo }}</span>
           <span class="section-heading-upper">{{ post.contenido }}</span>
@@ -39,20 +36,4 @@
     </div>
   </div>
 </section>
-{% endfor %}
-<section>
-  <div style="width: 75%; margin: auto; text-align: center; color: white;">
-    Categorias:
-    {% for post in posts %}
-    
-    {% for categoria in post.categorias.all %} 
-      {{categoria.nombre}} &nbsp;&nbsp;&nbsp;
-      {% endfor %}
-    {% endfor %}
-
-  </div>
-</section>
-
-{% endblock %}
-
-
+{% endfor %} {% endblock %}
